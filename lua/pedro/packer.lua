@@ -40,17 +40,13 @@ return require('packer').startup(function(use)
     }
     use('windwp/nvim-autopairs')
     use('lervag/vimtex')
+    use 'ray-x/go.nvim'
+    use 'ray-x/guihua.lua' -- recommended if need floating window support
+    use 'neovim/nvim-lspconfig'
     use {
-        "olexsmir/gopher.nvim",
-        requires = { -- dependencies
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
         },
     }
-    use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional
-  },
-}
 end)
