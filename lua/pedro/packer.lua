@@ -39,5 +39,18 @@ return require('packer').startup(function(use)
         }
     }
     use('windwp/nvim-autopairs')
-    use ('lervag/vimtex')
+    use('lervag/vimtex')
+    use {
+        "olexsmir/gopher.nvim",
+        requires = { -- dependencies
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    }
+    use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+  },
+}
 end)
