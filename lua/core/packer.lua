@@ -1,6 +1,3 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -41,7 +38,7 @@ return require('packer').startup(function(use)
     use('windwp/nvim-autopairs')
     use('lervag/vimtex')
     use 'ray-x/go.nvim'
-    use 'ray-x/guihua.lua'   -- recommended if need floating window support
+    use 'ray-x/guihua.lua' -- recommended if need floating window support
     use 'neovim/nvim-lspconfig'
     use {
         'nvim-tree/nvim-tree.lua',
@@ -53,4 +50,16 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+    use "savq/melange-nvim"
+    use {
+        'luisiacc/gruvbox-baby',
+        branch = 'main'
+    }
+    use({
+        'ramojus/mellifluous.nvim',
+        config = function()
+            require 'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
+            vim.cmd('colorscheme mellifluous')
+        end,
+    })
 end)
