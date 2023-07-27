@@ -1,2 +1,2 @@
-require("pedro.remap")
-require("pedro.set")
+require("core.remap")
+require("core.set")
