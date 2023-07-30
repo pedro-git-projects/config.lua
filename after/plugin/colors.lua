@@ -23,7 +23,7 @@ end
 
 function ColorMyPencils(color)
     apply_colorscheme(color)
-    set_transparency(false)
+    set_transparency(true)
 end
 
 ColorMyPencils("melange")
