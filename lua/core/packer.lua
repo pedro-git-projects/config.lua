@@ -65,4 +65,5 @@ return require('packer').startup(function(use)
             require 'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
         end,
     })
+    use 'windwp/nvim-ts-autotag'
 end)
