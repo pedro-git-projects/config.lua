@@ -1,8 +1,10 @@
 local colorschemes = {
     gruvbox = function() vim.cmd [[colorscheme gruvbox]] end,
-    melange = function() vim.cmd [[colorscheme melange]] end,
     baby = function() vim.cmd [[colorscheme gruvbox-baby]] end,
+    melange = function() vim.cmd [[colorscheme melange]] end,
     mellifluous = function() vim.cmd [[colorscheme mellifluous]] end,
+    miasma = function() vim.cmd [[colorscheme miasma]] end,
+    momiji = function() vim.cmd [[colorscheme momiji]] end,
 }
 
 local function apply_colorscheme(color)

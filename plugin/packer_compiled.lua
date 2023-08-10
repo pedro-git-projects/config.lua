@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    loaded = true,
+    path = "/home/pedro/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/pedro/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -164,6 +169,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pedro/.local/share/nvim/site/pack/packer/start/mellifluous.nvim",
     url = "https://github.com/ramojus/mellifluous.nvim"
+  },
+  ["miasma.nvim"] = {
+    loaded = true,
+    path = "/home/pedro/.local/share/nvim/site/pack/packer/start/miasma.nvim",
+    url = "https://github.com/xero/miasma.nvim"
+  },
+  momiji = {
+    loaded = true,
+    path = "/home/pedro/.local/share/nvim/site/pack/packer/start/momiji",
+    url = "https://github.com/kyoh86/momiji"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/pedro/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,

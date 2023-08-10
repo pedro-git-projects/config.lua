@@ -66,4 +66,10 @@ return require('packer').startup(function(use)
         end,
     })
     use 'windwp/nvim-ts-autotag'
+    use {
+        'numToStr/Comment.nvim',
+    }
+    use { "xero/miasma.nvim" }
+    use { "kyoh86/momiji" }
+    use { "jose-elias-alvarez/null-ls.nvim" }
 end)
