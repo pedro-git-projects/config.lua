@@ -1,45 +1,7 @@
 local lsp = require("lsp-zero")
-
-lsp.preset("recommended")
-
- lsp.ensure_installed({
-  'tsserver',
-  'gopls',
-  'pyright',
-  'clangd',
- })
-
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
-
-
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<S-k>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<S-j>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-})
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
-
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
-})
-
-lsp.on_attach(function(client, bufnr)
+local function on_attach(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -52,12 +14,48 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
+end
 
+-- Set up LSP and Pyright
+lsp.preset("recommended")
+lsp.ensure_installed({
+    'tsserver',
+    'gopls',
+    'pyright',
+    'clangd',
+})
+lsp.nvim_workspace()
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
+
+-- Set up cmp mappings for completion
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+    ['<S-k>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<S-j>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
+})
+
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+-- Set up nvim-cmp
+lsp.setup_nvim_cmp({
+    mapping = cmp_mappings
+})
+
+-- Set up LSP for gopls and Pyright
 lsp.setup({
     gopls = {
-        on_attach = lsp.on_attach, -- Use the default LSP Zero on_attach function
-        -- Add any additional gopls-specific settings here
+        on_attach = on_attach,
         cmd = { "gopls" },
         settings = {
             gopls = {
@@ -69,8 +67,22 @@ lsp.setup({
             },
         },
     },
+    pyright = {
+        on_attach = on_attach,
+        settings = {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    useLibraryCodeForTypes = true,
+                    diagnosticMode = "workspace",
+                },
+                autoImportCompletions = true,
+            },
+        },
+    },
 })
 
+-- Configure diagnostic display
 vim.diagnostic.config({
     virtual_text = true
 })

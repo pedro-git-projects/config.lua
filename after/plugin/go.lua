@@ -16,3 +16,4 @@ require('go').setup({
         capabilities = capabilities,
     },
 })
+

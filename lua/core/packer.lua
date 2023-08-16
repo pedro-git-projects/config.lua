@@ -1,4 +1,5 @@
 vim.cmd [[packadd packer.nvim]]
+-- remember to TSUpdate after updating treesitter
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
@@ -72,4 +73,14 @@ return require('packer').startup(function(use)
     use { "xero/miasma.nvim" }
     use { "kyoh86/momiji" }
     use { "jose-elias-alvarez/null-ls.nvim" }
+    use {
+        "ray-x/lsp_signature.nvim",
+    }
+    use {
+        'akinsho/flutter-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+    }
 end)
