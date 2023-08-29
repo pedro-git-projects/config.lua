@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
-
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -45,42 +44,50 @@ return require('packer').startup(function(use)
     use 'ray-x/go.nvim'
     use 'ray-x/guihua.lua' -- recommended if need floating window support
     use 'neovim/nvim-lspconfig'
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-    }
+
+    -- file explorer
+    -- use {
+    --     'nvim-tree/nvim-tree.lua',
+    --     requires = {
+    --         'nvim-tree/nvim-web-devicons', -- optional
+    --     },
+    -- }
+
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+
+    -- themes
     use "savq/melange-nvim"
     use {
         'luisiacc/gruvbox-baby',
         branch = 'main'
     }
+    use { "kyoh86/momiji" }
+    use { "xero/miasma.nvim" }
     use({
         'ramojus/mellifluous.nvim',
         config = function()
             require 'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
         end,
     })
+
     use 'windwp/nvim-ts-autotag'
     use {
         'numToStr/Comment.nvim',
     }
-    use { "xero/miasma.nvim" }
-    use { "kyoh86/momiji" }
     use { "jose-elias-alvarez/null-ls.nvim" }
+
     use {
         "ray-x/lsp_signature.nvim",
     }
+    --[[     use { "hrsh7th/cmp-nvim-lsp-signature-help" } ]]
+    --    use 'Olical/conjure'
+    --[[  use({ "elixir-tools/elixir-tools.nvim", tag = "stable", requires = { "nvim-lua/plenary.nvim" } }) ]]
     use {
-        'akinsho/flutter-tools.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'stevearc/dressing.nvim', -- optional for vim.ui.select
-        },
+        'ms-jpq/chadtree',
+        branch = 'chad',
+        run = 'python3 -m chadtree deps'
     }
 end)
